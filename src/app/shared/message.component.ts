@@ -6,8 +6,7 @@ import { UserInfo } from "../model";
     template: `
         <div class="message-container">
             <div class="message-label-container">
-                <label> First Name : {{data.firstname}}</label>
-                <label> Phone Number : {{data.phonenumber}}</label>
+                <label> {{seq + 1}}. First Name : {{data.firstname}} - Phone Number : {{data.phonenumber}}</label>
             </div>
             <div class="delete-btn-container">
                 <img class="delete-btn" src="../assets/delete.png" (click)="onDelete()"/>
@@ -18,7 +17,10 @@ import { UserInfo } from "../model";
 export default class MessageComponent implements OnInit {
 
     @Input("dataProvider")
-    data!: UserInfo
+    data!: UserInfo;
+
+    @Input("sequence")
+    seq!: number;
 
     @Output("onDelete")
     eventEmmiter: EventEmitter<UserInfo> = new EventEmitter();

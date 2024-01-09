@@ -7,13 +7,15 @@ import BridgeService from "../service/bridge.service";
     template: `
         <form [formGroup]="form" class="form-container">
             <form-field label-text="First name : ">
-                <input id="firstname" formControlName="firstname" placeholder="First name" type="text"/>
+                <input id="firstname" class="icon-name" formControlName="firstname" placeholder="First name" type="text"/>
             </form-field>
             <form-field label-text="Phone Number : ">
-                <input id="phonenumber" formControlName="phonenumber" placeholder="Phone"/>
+                <input id="phonenumber" class="icon-phone" formControlName="phonenumber" placeholder="Phone"/>
             </form-field>
             <form-field>
-                <button id="btnSave" (click)="sendMessageToConsumer()" [disabled]="!form.valid">Save</button>
+                <button id="btnSave" (click)="sendMessageToConsumer()" [disabled]="!form.valid">
+                    Save <i class="icon-save" ></i>
+                </button>
             </form-field>
         </form>
     `
@@ -32,8 +34,12 @@ export default class ProducerComponent implements OnInit {
     }
 
     sendMessageToConsumer(): void {
-        this.bridgeService.sendMessage(this.form.value);
+        this.bridgeService.sendMessage({id: this.getMessageId() , ...this.form.value});
         this.form.reset();
+    }
+
+    getMessageId(): number {
+       return Math.floor(Math.random() * 1000) + 1;
     }
 
 }
