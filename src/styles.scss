@@ -17,6 +17,12 @@ app-root {
     flex: 1;
 }
 
+consumer {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    flex-direction: column;
+}
 
 producer {
     display: flex;
@@ -26,6 +32,9 @@ producer {
     justify-content: center;
 }
 
+#consumer-container {
+    overflow-y: auto;
+}
 
 .container {
     display: flex;
@@ -59,4 +68,27 @@ producer {
     }
 }
 
+.message-container {
+    display: flex;
+    border: solid #cdcdcd 1px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}
 
+.message-label-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-btn-container {
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
